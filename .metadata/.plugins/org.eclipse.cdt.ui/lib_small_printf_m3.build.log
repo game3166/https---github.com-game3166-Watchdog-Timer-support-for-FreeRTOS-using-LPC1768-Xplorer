@@ -1,0 +1,6 @@
+12:57:08 **** Incremental Build of configuration Debug for project lib_small_printf_m3 ****
+make all 
+make: Nothing to be done for `all'.
+
+12:57:08 Build Finished (took 157ms)
+

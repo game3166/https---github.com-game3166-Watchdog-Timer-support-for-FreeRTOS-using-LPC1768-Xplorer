@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+	<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
+		<provider class="org.eclipse.cdt.managedbuilder.language.settings.providers.GCCBuildCommandParser" id="com.crt.advproject.GCCBuildCommandParser" keep-relative-paths="false" name="MCU GCC Build Output Parser" parameter="(arm-none-eabi-gcc)|(arm-none-eabi-[gc]\+\+)|(gcc)|([gc]\+\+)|(clang)" prefer-non-shared="false">
+			<language id="org.eclipse.cdt.core.gcc">
+				<resource project-relative-path="src/debug.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS/src/list.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS/src/queue.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS-IO/Common/FreeRTOS_DriverInterface.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/Debug/O/Common/FreeRTOS_DriverInterface.c">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS/port/memmang/heap_2.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS-IO/Device/LPC17xx/FreeRTOS_LPC17xx_wdt.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/Debug/O/Device/LPC17xx/FreeRTOS_LPC17xx_wdt.c">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="src/main.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS/src/croutine.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="src/TEST_WDT.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS/port/lpcxpresso/m3/port.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="src/cr_startup_lpc17.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS-IO/Device/LPC17xx/FreeRTOS_LPC17xx_DriverInterface.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/Debug/O/Device/LPC17xx/FreeRTOS_LPC17xx_DriverInterface.c">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="src/cr_startup_lpc175x_6x.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS-IO/Device/LPC17xx/WDTManage.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/Debug/O/Device/LPC17xx/WDTManage.c">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+				<resource project-relative-path="FreeRTOS/src/tasks.c">
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/lib_small_printf_m3/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Device/LPC17xx/SupportedBoards">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS-IO/Include">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/17xx.Firmware/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/src">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/FreeRTOS-IO_Demo/FreeRTOS/port/lpcxpresso/m3">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="includePath" name="/CMSISv2p00_LPC17xx/inc">
+						<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+					</entry>
+					<entry kind="macro" name="__CODE_RED" value=""/>
+					<entry kind="macro" name="__REDLIB__" value=""/>
+					<entry kind="macro" name="__USE_CMSIS" value="CMSISv2p00_LPC17xx"/>
+				</resource>
+			</language>
+		</provider>
+	</extension>
+</plugin>

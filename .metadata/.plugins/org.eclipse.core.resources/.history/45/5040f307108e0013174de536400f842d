@@ -1,0 +1,208 @@
+/***********************************************************************
+ * $Id::                                                               $
+ *
+ *     Copyright (C) 2010 NXP Semiconductors.
+ *
+ * Description:
+ *     This example project builds in LPCXpresso and demonstrates using
+ *     FreeRTOS to create 4 threads which interact with peripherals on
+ *     the LPCXpresso board as well as the Embedded Artists baseboard.
+ *
+ ***********************************************************************
+ * Software that is described herein is for illustrative purposes only
+ * which provides customers with programming information regarding the
+ * products. This software is supplied "AS IS" without any warranties.
+ * NXP Semiconductors assumes no responsibility or liability for the
+ * use of the software, conveys no license or title under any patent,
+ * copyright, or mask work right to the product. NXP Semiconductors
+ * reserves the right to make changes in the software without
+ * notification. NXP Semiconductors also make no representation or
+ * warranty that such application will be suitable for the specified
+ * use without further testing or modification.
+ **********************************************************************/
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "FreeRTOS_IO.h"
+#include "debug.h"
+#include "lpc17xx_gpio.h"
+#include "TEST_WDT.h"
+#include <stdio.h>
+
+#define WATCHDOG_DEVICE		(const int8_t *)"/WDT0/"
+//#define LCD_DEVICE		(const int8_t *)"/LCD0/"
+
+#include <NXP/crp.h>
+__CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
+
+void config_switch( void )
+{
+	//GPIOInit();
+	LPC_GPIO2->FIOPIN |=~TEST_WDT_BUZ;
+	LPC_GPIO0->FIOPIN |=~TEST_WDT_LED;
+	LPC_GPIO2->FIOPIN |=~TEST_WDT_SW;
+
+	LPC_GPIO2->FIODIR |=TEST_WDT_BUZ;
+	LPC_GPIO0->FIODIR |=TEST_WDT_LED;
+	LPC_GPIO2->FIODIR |=TEST_WDT_SW;
+
+	//GPIO_SetDir(0,10,1);
+	//GPIO_SetDir(2,2,0);
+	//GPIO_SetDir(2,12,0);
+}
+
+xTaskHandle Task1_Handle, Task2_Handle, Task3_Handle, TaskCtr_Handle;
+
+Peripheral_Descriptor_t WDT_handle, LCD_handle;
+
+void vTask1(void *pvParameters)
+{
+	unsigned int counter=0;
+	portTickType xLastWakeTime;
+	const portTickType xFrequency = 100;
+	xLastWakeTime = xTaskGetTickCount();
+	register_wdtmanage( &counter );
+	printf("this is task1\n");
+	while(1)
+	{
+		if( check_switch() )
+		{
+			LPC_GPIO0->FIOPIN |=  TEST_WDT_LED;
+			LPC_GPIO2->FIOPIN |=  TEST_WDT_BUZ;
+			counter++;
+			printf("t1=%d\n",counter);
+		}
+		//taskYIELD();
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
+	}
+	vTaskDelete(Task1_Handle);
+}
+
+void vTask2(void *pvPararmeters)
+{
+	unsigned int counter=0;
+	portTickType xLastWakeTime;
+	const portTickType xFrequency = 100;
+	xLastWakeTime = xTaskGetTickCount();
+	register_wdtmanage( &counter );
+	printf("this is task2\n");
+	while(1)
+	{
+		LPC_GPIO0->FIOPIN |=  TEST_WDT_LED;
+		LPC_GPIO2->FIOPIN |=  TEST_WDT_BUZ;
+		counter++;
+		printf("t2=%d\n",counter);
+		//taskYIELD();
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
+	}
+	vTaskDelete(Task2_Handle);
+}
+
+void vTask3(void *pvParameters)
+{
+	unsigned int counter = 0;
+	unsigned portBASE_TYPE prio;
+	portTickType xLastWakeTime;
+	const portTickType xFrequency = 100;
+	xLastWakeTime = xTaskGetTickCount();
+	register_wdtmanage( &counter );
+	//printf("this is task3\n");
+
+	while(1)
+	{
+		LPC_GPIO0->FIOPIN |=  TEST_WDT_LED;
+		LPC_GPIO2->FIOPIN |=  TEST_WDT_BUZ;
+		counter++;
+		//printf("t3=%d\n",counter);
+		prio=uxTaskPriorityGet(NULL);
+		printf("P=%d\n",prio);
+		//taskYIELD();
+		printf("task 3 has yield\n");
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
+	}
+	vTaskDelete(Task3_Handle);
+
+}
+
+unsigned int bcount1=0, bcount2=0, bcount3=0;
+void vTask4(void *pvParameters)
+{
+	portTickType xLastWakeTime;
+	const portTickType xFrequency = 100;
+	xLastWakeTime = xTaskGetTickCount();
+	printf("this is task4\n");
+
+	while(1)
+	{
+		if(check_counters())
+			FreeRTOS_ioctl(WDT_handle, ioctlWDIOC_KEEPALIVE, (void *)0);
+		printf("beforeyield\n");
+		//taskYIELD();
+		printf("task 4 has yield\n");
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
+	}
+	vTaskDelete(TaskCtr_Handle);
+}
+
+int main(void)
+{
+	signed portBASE_TYPE retval;
+	uint32_t flag = 0;
+	config_switch();
+	WDT_handle = FreeRTOS_open( WATCHDOG_DEVICE, flag );
+	FreeRTOS_ioctl( WDT_handle, ioctlWDIOC_GETBOOTSTATUS, (void *)&flag );
+	//printf("flag=%d \n",flag);
+	if( flag )
+	{
+		    // printf("flagis1\n");
+			test_wdt();
+			//printf("AFTERTwDT\n");
+			while(1);
+	}
+
+	retval=xTaskCreate(vTask1, (const signed portCHAR*) "T1", configMINIMAL_STACK_SIZE, NULL, configMAX_PRIORITIES, &Task1_Handle);
+	if( retval == pdFAIL )
+	{
+			printf("no1\n");
+			while(1);
+	}
+	printf("t1done\n");
+	retval=xTaskCreate(vTask2, (const signed portCHAR*) "T2", configMINIMAL_STACK_SIZE, NULL, configMAX_PRIORITIES, &Task2_Handle);
+	if( retval == pdFAIL )
+		{
+				printf("no2\n");
+				while(1);
+		}
+	retval=xTaskCreate(vTask3, (const signed portCHAR*) "T3", configMINIMAL_STACK_SIZE, NULL, configMAX_PRIORITIES, &Task3_Handle);
+	if( retval == pdFAIL )
+			{
+					printf("no3\n");
+					while(1);
+			}
+	retval = xTaskCreate(vTask4, (const signed portCHAR*) "Cntr", configMINIMAL_STACK_SIZE, NULL, configMAX_PRIORITIES-3, &TaskCtr_Handle);
+
+		if( retval == pdFAIL )
+				{
+						printf("no4\n");
+						while(1);
+				}
+
+
+	vTaskStartScheduler();
+
+	while(1);
+}
+
+/*	FOR DEBUG PURPOSES	*/
+
+// This function is called whenever FreeRTOS detects a stack overflow.
+void vApplicationStackOverflowHook( xTaskHandle *pxTask, signed portCHAR *pcTaskName )
+{
+	printf("Stack overflow in thread: ");
+	debug_puts((char *)pcTaskName);
+}
+
+void vApplicationIdleHook( void )
+{
+	__WFI();
+}

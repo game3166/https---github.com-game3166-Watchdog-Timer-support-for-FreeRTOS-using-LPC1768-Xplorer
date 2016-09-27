@@ -1,0 +1,52 @@
+#include "WDTManage.h"
+#include "LPC17xx.h"
+
+struct ManageStruct MngTCB[MAX_TCB_MNGABLE];
+uint8_t index = 0;
+
+int register_wdtmanage( unsigned int * counter )
+{
+		if( index == MAX_TCB_MNGABLE )
+			return 0;
+		MngTCB[index].count = counter;
+		MngTCB[index].bcount = *counter;
+		index++;
+		return 1;
+}
+
+uint8_t check_counters()
+{
+	int i;
+	for(i = 0; i < index; i++)
+	{
+		if( MngTCB[i].bcount == *(MngTCB[i].count) )
+				return 0;
+		else
+			MngTCB[i].bcount++;
+	}
+	return 1;
+}
+
+
+int check_switch( void )
+{
+	return (LPC_GPIO2->FIOPIN & (1<<12));
+}
+
+/*
+uint8_t check_counter( xTaskHandle TCBHandle )
+{
+	int i=0;
+	while( MngTCB[i].TCBHandle != TCBHandle )
+	{
+		i++;
+		if( i == MAX_TCB_MNGABLE )
+			return TCBMANAGE_ERR;
+	}
+	c
+}
+*/
+int get_totalTCB( void )
+{
+	return index;
+}

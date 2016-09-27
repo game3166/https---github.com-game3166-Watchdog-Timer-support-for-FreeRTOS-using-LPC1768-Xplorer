@@ -1,0 +1,96 @@
+
+/* FreeRTOS includes. */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+#include <stdio.h>
+/* IO library includes. */
+
+#include "FreeRTOS_IO.h"
+#include "FreeRTOS_wdt.h"
+portBASE_TYPE xReturn = pdFAIL;
+
+portBASE_TYPE FreeRTOS_WDT_open( Peripheral_Control_t * const pxPeripheralControl )
+{
+
+//	LPC_WDT_TypeDef * const pxWDT = ( LPC_WDT_TypeDef * const ) diGET_PERIPHERAL_BASE_ADDRESS( pxPeripheralControl );
+	const uint8_t cPeripheralNumber = diGET_PERIPHERAL_NUMBER( pxPeripheralControl );
+	uint32_t TimeOut = 300000000; 						// Default Counter Value
+	/* Sanity check the peripheral number. */
+		if( cPeripheralNumber < boardNUM_WDTS )
+		{
+			pxPeripheralControl->read = NULL;		// currently not defined
+			pxPeripheralControl->write = NULL;		// currently not defined
+			pxPeripheralControl->ioctl = FreeRTOS_WDT_ioctl;
+
+
+			taskENTER_CRITICAL();
+			{
+				WDT_ClrTimeOutFlag ();
+				WDT_Init( WDT_CLKSRC_IRC, WDT_WDMOD_WDEN | WDT_MODE_INT_ONLY );
+				WDT_Start(TimeOut);
+
+			}
+			taskEXIT_CRITICAL();
+
+			xReturn = pdPASS;
+		}
+		else
+		{
+			xReturn = pdFAIL;
+		}
+
+
+		return xReturn;
+
+}
+
+portBASE_TYPE FreeRTOS_WDT_ioctl( Peripheral_Descriptor_t pxPeripheral, uint32_t ulRequest, void *pvValue )
+{
+
+
+//	Peripheral_Control_t * const pxPeripheralControl = ( Peripheral_Control_t * const ) pxPeripheral;
+	uint32_t ulValue = ( uint32_t ) pvValue;
+	uint32_t *intValue = (uint32_t *) pvValue;
+
+	//printf("In act ioctl\n");
+//	const int8_t cPeripheralNumber = diGET_PERIPHERAL_NUMBER( ( ( Peripheral_Control_t * const ) pxPeripheral ) );
+//	LPC_WDT_TypeDef * pxWDT = ( LPC_WDT_TypeDef * ) diGET_PERIPHERAL_BASE_ADDRESS( ( ( Peripheral_Control_t * const ) pxPeripheral ) );
+	portBASE_TYPE xReturn = pdPASS;
+
+	/* Sanity Check */
+	//
+	xReturn = pdPASS;
+
+	taskENTER_CRITICAL();
+	{
+		switch( ulRequest )
+		{
+			case ioctlWDIOC_SETTIMEOUT :
+	//			configASSERT( ulValue >= 0xFF );	// define 0xFF as configWDT_TIMEOUT_MIN
+				WDT_UpdateTimeOut( ulValue );
+
+				break;
+
+			case ioctlWDIOC_GETTIMERVAL :
+				*intValue = WDT_GetCurrentCount();
+
+				break;
+			case ioctlWDIOC_GETBOOTSTATUS :
+				*intValue = WDT_ReadTimeOutFlag();
+				//printf("GBstatus\n");
+				printf("iv=%d\n",*intValue);
+				break;
+			case ioctlWDIOC_KEEPALIVE :
+				WDT_Feed();
+				printf("fedwdt\n");
+				break;
+			default :
+				xReturn = pdFAIL;
+				break;
+		}
+
+	}
+	taskEXIT_CRITICAL();
+	return xReturn;
+}

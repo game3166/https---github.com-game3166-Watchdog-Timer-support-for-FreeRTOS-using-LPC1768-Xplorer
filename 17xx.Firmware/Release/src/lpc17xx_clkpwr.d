@@ -1,0 +1,22 @@
+src/lpc17xx_clkpwr.d: ../src/lpc17xx_clkpwr.c \
+ C:\Users\desd56\Desktop\final\final_code\17xx.Firmware\inc/lpc17xx_clkpwr.h \
+ C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/lpc17xx.h \
+ C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/core_cm3.h \
+ C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/core_cmInstr.h \
+ C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/core_cmFunc.h \
+ C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/system_LPC17xx.h \
+ C:\Users\desd56\Desktop\final\final_code\17xx.Firmware\inc/lpc_types.h
+
+C:\Users\desd56\Desktop\final\final_code\17xx.Firmware\inc/lpc17xx_clkpwr.h:
+
+C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/lpc17xx.h:
+
+C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/core_cm3.h:
+
+C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/core_cmInstr.h:
+
+C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/core_cmFunc.h:
+
+C:\Users\desd56\Desktop\final\final_code\CMSISv2p00_LPC17xx\inc/system_LPC17xx.h:
+
+C:\Users\desd56\Desktop\final\final_code\17xx.Firmware\inc/lpc_types.h:

@@ -1,0 +1,202 @@
+/***********************************************************************
+ * $Id::                                                               $
+ *
+ *     Copyright (C) 2010 NXP Semiconductors.
+ *
+ * Description:
+ *     This example project builds in LPCXpresso and demonstrates using
+ *     FreeRTOS to create 4 threads which interact with peripherals on
+ *     the LPCXpresso board as well as the Embedded Artists baseboard.
+ *
+ ***********************************************************************
+ * Software that is described herein is for illustrative purposes only
+ * which provides customers with programming information regarding the
+ * products. This software is supplied "AS IS" without any warranties.
+ * NXP Semiconductors assumes no responsibility or liability for the
+ * use of the software, conveys no license or title under any patent,
+ * copyright, or mask work right to the product. NXP Semiconductors
+ * reserves the right to make changes in the software without
+ * notification. NXP Semiconductors also make no representation or
+ * warranty that such application will be suitable for the specified
+ * use without further testing or modification.
+ **********************************************************************/
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "FreeRTOS_IO.h"
+#include "debug.h"
+#include "lpc17xx_gpio.h"
+#include "TEST_WDT.h"
+#include <stdio.h>
+
+#include <NXP/crp.h>
+__CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
+void WDT_IRQHandler (void)
+{
+	printf("ISR\n");
+	test_wdt();
+	WDT_ClrTimeOutFlag ();
+
+}
+void config_switch( void )
+{
+	LPC_GPIO2->FIOPIN |=~TEST_WDT_BUZ;
+	LPC_GPIO0->FIOPIN |=~TEST_WDT_LED;
+	LPC_GPIO2->FIOPIN |=~TEST_WDT_SW;
+
+	LPC_GPIO2->FIODIR |=TEST_WDT_BUZ;
+	LPC_GPIO0->FIODIR |=TEST_WDT_LED;
+	LPC_GPIO2->FIODIR |=TEST_WDT_SW;
+}
+
+Peripheral_Descriptor_t WDT_desc;
+xTaskHandle x1TaskHandle, x2TaskHandle, x3TaskHandle, x4TaskMonitorHandle;
+unsigned int cnt1,cnt2,cnt3;
+unsigned int counter1,counter2,counter3;
+
+/*-----------------------------------------------------------*/
+
+void vTestTask1(void *pvParameters)
+{
+	portTickType xLastWakeTime;
+	const portTickType xFrequency = 100;
+	xLastWakeTime = xTaskGetTickCount();
+	printf("tsk1\n");
+	while(1)
+	{
+		if(LPC_GPIO2->FIOPIN & (1<<12))
+		{
+			counter1++;
+		}
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
+	}
+}
+
+void vTestTask2(void *pvPararmeters)
+{
+	portTickType xLastWakeTime;
+	const portTickType xFrequency = 100;
+	xLastWakeTime = xTaskGetTickCount();
+	printf("tsk2\n");
+	while(1)
+	{
+		counter2++;
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
+	}
+}
+
+void vTestTask3(void *pvParameters)
+{
+	portTickType xLastWakeTime;
+	const portTickType xFrequency = 100;
+	xLastWakeTime = xTaskGetTickCount();
+	printf("tsk3\n");
+	while(1)
+	{
+		counter3++;
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
+	}
+}
+
+void vMonitorTask4(void *pvParameters)
+{
+	portTickType xLastWakeTime;
+	const portTickType xFrequency = 100;
+	xLastWakeTime = xTaskGetTickCount();
+
+	printf("tsk4\n");
+	while(1)
+	{
+		if((cnt1!=counter1) && (cnt2!=counter2) && (cnt3!=counter3))
+		{
+			FreeRTOS_ioctl(WDT_desc, ioctlWDIOC_KEEPALIVE, (void *)0);
+			cnt1++;
+			cnt2++;
+			cnt3++;
+		}
+		vTaskDelayUntil( &xLastWakeTime, xFrequency );
+	}
+}
+
+int main(void)
+{
+	uint32_t flag = 0;
+	config_switch();
+	int err;
+	cnt1=0,cnt2=0,cnt3=0,counter1=0,counter2=0,counter3=0;
+	WDT_desc = FreeRTOS_open((const int8_t *)"/WDT0/", flag );
+
+	/*FreeRTOS_ioctl( WDT_desc, ioctlWDIOC_GETBOOTSTATUS, (void *)&flag );
+	if( flag )
+	{
+			test_wdt();
+			while(1);
+	}*/
+	err=xTaskCreate(vTestTask1, (const signed portCHAR*) "Task1", configMINIMAL_STACK_SIZE, NULL, configMAX_PRIORITIES-1, &x1TaskHandle);
+	if( err == pdFAIL )
+	{
+		printf("task 1 creation failed");
+		while(1);
+	}
+	err=xTaskCreate(vTestTask2, (const signed portCHAR*) "Task2", configMINIMAL_STACK_SIZE, NULL, configMAX_PRIORITIES-1, &x2TaskHandle);
+	if( err == pdFAIL )
+	{
+		printf("task 2 creation failed");
+		while(1);
+	}
+	err=xTaskCreate(vTestTask3, (const signed portCHAR*) "Task3", configMINIMAL_STACK_SIZE, NULL, configMAX_PRIORITIES-1, &x3TaskHandle);
+	if( err == pdFAIL )
+	{
+		printf("task 3 creation failed");
+		while(1);
+	}
+	err=xTaskCreate(vMonitorTask4, (const signed portCHAR*) "Monitor", configMINIMAL_STACK_SIZE, NULL, configMAX_PRIORITIES-3, &x4TaskMonitorHandle);
+	if( err == pdFAIL )
+	{
+		printf("task 4 creation failed");
+		while(1);
+	}
+	/* Start the FreeRTOS scheduler. */
+	vTaskStartScheduler();
+
+	/* The following line should never execute.  If it does, it means there was
+	insufficient FreeRTOS heap memory available to create the Idle and/or timer
+	tasks.  See the memory management section on the http://www.FreeRTOS.org web
+	site for more information. */
+	for( ;; );
+
+}
+
+void vApplicationStackOverflowHook( xTaskHandle *pxTask, signed portCHAR *pcTaskName )
+{
+	// This function is called whenever FreeRTOS detects a stack overflow.
+	printf("Stack overflow in thread: ");
+	printf((char *)pcTaskName);
+}
+
+/*-----------------------------------------------------------*/
+
+void vApplicationMallocFailedHook( void )
+{
+	/* vApplicationMallocFailedHook() will only be called if
+	configUSE_MALLOC_FAILED_HOOK is set to 1 in FreeRTOSConfig.h.  It is a hook
+	function that will get called if a call to pvPortMalloc() fails.
+	pvPortMalloc() is called internally by the kernel whenever a task, queue,
+	timer or semaphore is created.  It is also called by various parts of the
+	demo application.  If heap_1.c or heap_2.c are used, then the size of the
+	heap available to pvPortMalloc() is defined by configTOTAL_HEAP_SIZE in
+	FreeRTOSConfig.h, and the xPortGetFreeHeapSize() API function can be used
+	to query the size of free heap space that remains (although it does not
+	provide information on how the remaining heap might be fragmented). */
+
+	taskDISABLE_INTERRUPTS();
+	for( ;; );
+}
+/*-----------------------------------------------------------*/
+
+void vApplicationIdleHook( void )
+{
+	//This function is called whenever the idle task is scheduled
+	printf("We are in idle task \n");
+	__WFI();
+}
